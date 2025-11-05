@@ -5,6 +5,8 @@ import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import ResumeModal from "./ResumeModal";
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 const MyApplications = () => {
   const { user } = useContext(Context);
   const [applications, setApplications] = useState([]);
@@ -19,7 +21,7 @@ const MyApplications = () => {
       if (user && user.role === "Employer") {
         axios
           .get(
-            "http://localhost:4000/api/v1/application/employer/getall",
+            `${API_URL}/api/v1/application/employer/getall`,
             {
               withCredentials: true,
             }
@@ -30,7 +32,7 @@ const MyApplications = () => {
       } else {
         axios
           .get(
-            "http://localhost:4000/api/v1/application/jobseeker/getall",
+            `${API_URL}/api/v1/application/jobseeker/getall`,
             {
               withCredentials: true,
             }
@@ -52,7 +54,7 @@ const MyApplications = () => {
     try {
       axios
         .delete(
-          `http://localhost:4000/api/v1/application/delete/${id}`,
+          `${API_URL}/api/v1/application/delete/${id}`,
           {
             withCredentials: true,
           }

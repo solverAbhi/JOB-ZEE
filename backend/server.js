@@ -8,6 +8,6 @@ cloudinary.v2.config({
 app.get("/", (req, res) => {
   res.send("hi: i am running");
 });
-app.listen(process.env.PORT, () => {
+app.listen(process.env.PORT, '0.0.0.0',() => {
   console.log(`sercver running on port ${process.env.PORT}`);
 });
